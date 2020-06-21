@@ -1,0 +1,20 @@
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: slt-deployment
+spec:
+  selector:
+    matchLabels:
+      app: slt
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: slt
+    spec:
+      containers:
+      - name: nginx
+        image: farukh/slt-nginx:0.0.1 # Update the version of nginx from 1.7.9 to 1.8
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
